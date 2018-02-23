@@ -9,11 +9,22 @@ app.set('views', './ejs_views')
 
 app.use(express.urlencoded({extended: false}))
 app.use(session({
-	secret: '',
+	secret: 'SuperSecrettestKey',
 	resave: false,
     saveUninitialized: true,
     cookie: {
         maxAge: 60*60, // if inactive, session expires in 1 hour
         path: '/'
     }
-}));
+}))
+
+app.get('/', (req,res) => {
+
+    res.render('index')
+})
+
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log('Server is running at port', port);
+});
