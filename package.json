@@ -1,19 +1,11 @@
 {
-  "name": "cllewellyn_p2",
+  "name": "p2",
   "version": "1.0.0",
-  "description": "P2 for webserver programing ",
+  "description": "p2",
   "main": "app.js",
   "scripts": {
-    "test": "app.js"
+    "start": "app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/camrun91/wsp2.git"
-  },
-  "author": "Cameron Llewellyn",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/camrun91/wsp2/issues"
-  },
-  "homepage": "https://github.com/camrun91/wsp2#readme"
+  "author": "cameron Llewellyn",
+  "license": "ISC"
 }
