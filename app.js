@@ -2,12 +2,14 @@
 
 const express = require('express')
 const session = require('express-session')
+const expressValidator = require('express-validator')
 
 const app = express();
 app.set('view engine','ejs')
 app.set('views', './ejs_views')
 
 app.use(express.urlencoded({extended: false}))
+app.use(expressValidator())
 app.use(session({
 	secret: 'SuperSecrettestKey',
 	resave: false,
@@ -19,13 +21,19 @@ app.use(session({
 }))
 
 app.get('/', (req,res) => {
-    
     res.render('index')
 
 })
 
 app.post('/',(req,res) => {
-    console.log('session visted is ' + $req.session.visited)
+    req.session.body = req.body
+req.checkBody('email',"Email Must contain @.").matches(/\@/)
+req.checkBody('password', "Password must be at least 4 chars long.").len(4)
+req.checkBody('ps', "You must choose some skills").notEmpty()
+req.checkBody('major', "You must choose one Major").notEmpty()
+if(!req.validationErrors())
+    return res.render('userinfo',req.session.body)
+else return res.render('index')
 })
 
 const port = process.env.PORT || 3000;
