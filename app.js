@@ -19,10 +19,15 @@ app.use(session({
 }))
 
 app.get('/', (req,res) => {
-
+    if(!req.session.visited)
+        req.session.visited = true
     res.render('index')
+
 })
 
+app.post('/',(req,res) => {
+    console.log('session visted is ' + $req.session.visited)
+})
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
