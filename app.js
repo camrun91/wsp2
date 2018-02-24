@@ -19,8 +19,7 @@ app.use(session({
 }))
 
 app.get('/', (req,res) => {
-    if(!req.session.visited)
-        req.session.visited = true
+    
     res.render('index')
 
 })
