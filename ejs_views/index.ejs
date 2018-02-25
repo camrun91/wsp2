@@ -19,7 +19,12 @@
 				<tr>
 					<td align="right">Email:</td>
 					<td><input type="text" name="email" value=""></td>
-					<td></td>
+					<td><% if(errors !== undefined){%>
+							<% for(const error in errors) { %>
+								
+							<% } %>
+						<% } %>
+					</td>
 				</tr>
 				<tr>
 					<td align="right">Password:</td>

@@ -3,7 +3,6 @@
 const express = require('express')
 const session = require('express-session')
 const expressValidator = require('express-validator')
-
 const app = express();
 app.set('view engine','ejs')
 app.set('views', './ejs_views')
@@ -19,10 +18,10 @@ app.use(session({
         path: '/'
     }
 }))
-
+let errors={errors:[]}
 app.get('/', (req,res) => {
-    res.render('index')
-
+    res.render('index',errors)
+    console.log(errors);
 })
 
 app.post('/',(req,res) => {
@@ -33,7 +32,10 @@ req.checkBody('ps', "You must choose some skills").notEmpty()
 req.checkBody('major', "You must choose one Major").notEmpty()
 if(!req.validationErrors())
     return res.render('userinfo',req.session.body)
-else return res.render('index')
+else {errors = req.validationErrors(true) 
+    console.log(errors);
+    return res.render('index',errors)}
+
 })
 
 const port = process.env.PORT || 3000;
