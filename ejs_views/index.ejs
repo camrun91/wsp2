@@ -18,23 +18,39 @@
 			<tbody>
 				<tr>
 					<td align="right">Email:</td>
-					<td><input type="text" name="email" value=""></td>
-					<td><% if(errors !== undefined){%>
-							<% for(const error in errors) { %>
-								
-							<% } %>
+					<td>
+						<%if(typeof input=='object' && input.email){%>
+							<input type="text" name="email" value="<%= input.email %>">
+						
+						<% } else {%>
+							<input type="text" name="email" value="">
+						<%}%>
+					</td>
+					<td><%if(typeof errors == 'object' && errors.email){%>
+						<font style="color: red;"><%= errors.email.msg %></font>
 						<% } %>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">Password:</td>
-					<td><input type="password" name="password" value=""></td>
-					<td></td>
+					<td>
+							<%if(typeof input=='object' && input.password){%>
+								<input type="password" name="password" value="<%= input.password %>">
+							<% } else {%>
+								<input type="password" name="password" value="">
+							<%}%>
+						
+					</td>
+					<td>
+						<%if(typeof errors == 'object' && errors.password){%>
+							<font style="color: red;"><%= errors.password.msg %></font>
+							<% } %>
+					</td>
 				</tr>
 				<tr>
 					<td align="right">Programming Skills:</td>
 					<td>
-						<input type="checkbox" name="ps" value="nodejs"
+						<input type="checkbox" name="ps" value="nodejs" 
 							
 								> Nodejs &nbsp
 						<input type="checkbox" name="ps" value="java"
@@ -47,7 +63,11 @@
 							
 								> PHP &nbsp
 					</td>
-					<td></td>
+					<td>
+						<%if(typeof errors == 'object' && errors.ps){%>
+							<font style="color: red;"><%= errors.ps.msg %></font>
+							<% } %>
+					</td>
 				</tr>
 				<tr>
 					<td align="right">Major</td>
@@ -59,13 +79,17 @@
 							
 								> SE &nbsp
 					</td>
-					<td></td>
+					<td>
+						<%if(typeof errors == 'object' && errors.major){%>
+							<font style="color: red;"><%= errors.major.msg %></font>
+							<% } %>
+					</td>
 				</tr>
 				<tr>
 					<td align="right">Residency</td>
 					<td>
 						<select name="city">
-							<option 
+							<option value="-- Choose --"
 								
 								>-- Choose --</option>
 							<option value="edmond"
@@ -85,7 +109,11 @@
 								>Norman</option>
 						</select>
 					</td>
-					<td></td>
+					<td>
+						<%if(typeof errors == 'object' && errors.city){%>
+							<font style="color: red;"><%= errors.city.msg %></font>
+							<% } %>
+					</td>
 				</tr>
 				<tr>
 					<td></td>
