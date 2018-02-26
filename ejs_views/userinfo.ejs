@@ -18,75 +18,71 @@
 			<tbody>
 				<tr>
 					<td align="right">Email:</td>
-					<td><input type="text" name="email" value=""></td>
+					<td><%= input.email %></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td align="right">Password:</td>
-					<td><input type="password" name="password" value=""></td>
+					<td><%= input.password %></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td align="right">Programming Skills:</td>
 					<td>
-						<input type="checkbox" name="nodejs" value="nodejs"
+						<%if(input.nodejs) {%>
+							Nodejs &nbsp
+							<%}%>
+
+						<%if(input.java) {%>
+								 Java &nbsp
+								<%}%>
+						<%if(input.aspnet) {%>
+								 ASP.NET &nbsp
+								<%}%>
+						<%if(input.php) {%>
 							
-								> Nodejs &nbsp
-						<input type="checkbox" name="java" value="java"
-							
-								> Java &nbsp
-						<input type="checkbox" name="aspnet" value="aspnet"
-							
-								> ASP.NET &nbsp
-						<input type="checkbox" name="php" value="php"
-							
-								> PHP &nbsp
+								 PHP &nbsp
+								<%}%>
 					</td>
 					<td></td>
 				</tr>
 				<tr>
-					<td align="right">Major</td>
+					<td align="right">Major:</td>
 					<td>
-						<input type="radio" name="major" value="cs"
-							
-								> CS &nbsp
-						<input type="radio" name="major" value="se"
-							
-								> SE &nbsp
+							<%if(input.major == "cs") {%>
+								CS &nbsp
+							<%}%>
+							<%if(input.major == "se") {%>
+								SE &nbsp
+							<%}%>
 					</td>
 					<td></td>
 				</tr>
 				<tr>
-					<td align="right">Residency</td>
+					<td align="right">Residency:</td>
 					<td>
-						<select name="city">
-							<option 
-								
-								>-- Choose --</option>
-							<option value="edmond"
-								
-								>Edmond</option>
-							<option value="okc"
-								
-								>Oklahoma City</option>
-							<option value="moore"
-								
-								>Moore</option>
-							<option value="bethany"
-								
-								>Bethany</option>
-							<option value="norman"
-								
-								>Norman</option>
-						</select>
+						
+							<%if(input.city == "edmond") {%>
+								Edmond
+							<%}%>
+							<%if(input.city == "okc") {%>
+								Oklahoma City
+							<%}%>
+							<%if(input.city == "moore") {%>
+								Moore
+							<%}%>
+							<%if(input.city == "bethany") {%>
+								Bethany
+							<%}%>
+							<%if(input.city == "norman") {%>
+								Norman
+							<%}%>
+							
 					</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td>
-						<button type="submit" class="btn btn-primary">Register</button>
-					</td>
 				</tr>
 			</tbody>
 			</table>

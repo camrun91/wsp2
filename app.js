@@ -27,14 +27,16 @@ app.get('/', (req,res) => {
 
 app.post('/',(req,res) => {
     req.session.input = req.body
-req.sanitizeBody('city').blacklist(/(-- Choose --)/)
 req.checkBody('email',"Email Must contain @.").matches(/\@/)
 req.checkBody('password', "Password must be at least 4 chars long.").len(4)
-req.checkBody('ps', "You must choose some skills").notEmpty()
+//req.checkBody('nodejs').notEmpty()
+//req.checkBody('java').notEmpty()
+//req.checkBody('aspnet').notEmpty()
+//req.checkBody('php').notEmpty()
 req.checkBody('major', "You must choose one Major").notEmpty()
 req.checkBody('city', "A city must be selected.").notEmpty()
 if(!req.validationErrors())
-    return res.render('userinfo',req.session.input)
+    return res.render('userinfo',req.session)
 else {let errors = req.validationErrors(true) 
     req.session.errors = errors
     return res.render('index',req.session)}    

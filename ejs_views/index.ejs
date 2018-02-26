@@ -21,7 +21,6 @@
 					<td>
 						<%if(typeof input=='object' && input.email){%>
 							<input type="text" name="email" value="<%= input.email %>">
-						
 						<% } else {%>
 							<input type="text" name="email" value="">
 						<%}%>
@@ -39,7 +38,6 @@
 							<% } else {%>
 								<input type="password" name="password" value="">
 							<%}%>
-						
 					</td>
 					<td>
 						<%if(typeof errors == 'object' && errors.password){%>
@@ -50,34 +48,58 @@
 				<tr>
 					<td align="right">Programming Skills:</td>
 					<td>
-						<input type="checkbox" name="ps" value="nodejs" 
-							
+						<%if(typeof input=='object' && input.nodejs){%>
+						<input type="checkbox" name="nodejs" value="nodejs" checked	
 								> Nodejs &nbsp
-						<input type="checkbox" name="ps" value="java"
-							
+						<% } else {%>
+							<input type="checkbox" name="nodejs" value="nodejs" 	
+								> Nodejs &nbsp
+						<% } %>
+						<%if(typeof input=='object' && input.java){%>
+						<input type="checkbox" name="java" value="java" checked
 								> Java &nbsp
-						<input type="checkbox" name="ps" value="aspnet"
-							
+						<% } else {%>
+							<input type="checkbox" name="java" value="java" 
+								> Java &nbsp
+						<% } %>
+						<%if(typeof input=='object' && input.aspnet){%>
+						<input type="checkbox" name="aspnet" value="aspnet" checked
 								> ASP.NET &nbsp
-						<input type="checkbox" name="ps" value="php"
-							
+						<% } else {%>
+							<input type="checkbox" name="aspnet" value="aspnet" 
+								> ASP.NET &nbsp
+						<% } %>
+						<%if(typeof input=='object' && input.php){%>
+						<input type="checkbox" name="php" value="php" checked
 								> PHP &nbsp
+						<% } else {%>
+							<input type="checkbox" name="php" value="php" 
+								> PHP &nbsp
+						<% } %>
 					</td>
 					<td>
-						<%if(typeof errors == 'object' && errors.ps){%>
-							<font style="color: red;"><%= errors.ps.msg %></font>
+						<%if(typeof input == 'object'&&!input.nodejs&&!input.java&&!input.aspnet&&!input.php){%>
+							<font style="color: red;">You must choose at least one skill</font>
 							<% } %>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">Major</td>
 					<td>
-						<input type="radio" name="major" value="cs"
-							
+						<%if(typeof input == 'object' && input.major == 'cs'){%>
+						<input type="radio" name="major" value="cs" checked
 								> CS &nbsp
-						<input type="radio" name="major" value="se"
-							
-								> SE &nbsp
+						<% } else {%>
+							<input type="radio" name="major" value="cs"
+								> CS &nbsp
+						<% } %>
+						<%if(typeof input == 'object' && input.major == 'se'){%>
+							<input type="radio" name="major" value="se" checked
+									> SE &nbsp
+							<% } else {%>
+								<input type="radio" name="major" value="se"
+									> SE &nbsp
+							<% } %>
 					</td>
 					<td>
 						<%if(typeof errors == 'object' && errors.major){%>
@@ -89,8 +111,82 @@
 					<td align="right">Residency</td>
 					<td>
 						<select name="city">
-							<option value="-- Choose --"
-								
+						<%if(typeof input == 'object' && input.city == ""){%>
+							<option value=""
+								>-- Choose --</option>
+							<option value="edmond"
+								>Edmond</option>
+							<option value="okc"
+								>Oklahoma City</option>
+							<option value="moore"
+								>Moore</option>
+							<option value="bethany"
+								>Bethany</option>
+							<option value="norman"
+								>Norman</option>
+						<% } else if(typeof input == 'object'&&input.city == "edmond") {%>
+							<option value="edmond"
+								>Edmond</option>
+							<option value="okc"
+								>Oklahoma City</option>
+							<option value="moore"
+								>Moore</option>
+							<option value="bethany"
+								>Bethany</option>
+							<option value="norman"
+								>Norman</option>
+						<% } else if(typeof input == 'object'&&input.city == "okc") {%>
+							<option value="okc"
+								>Oklahoma City</option>
+							<option value="edmond"
+								>Edmond</option>
+							<option value="moore"
+								>Moore</option>
+							<option value="bethany"
+								>Bethany</option>
+							<option value="norman"
+								>Norman</option>
+						<% } else if(typeof input == 'object'&&input.city == "moore") {%>
+							<option value="moore"
+								>Moore</option>
+							<option value="okc"
+								>Oklahoma City</option>
+							<option value="edmond"
+								>Edmond</option>
+							<option value="moore"
+								>Moore</option>
+							<option value="bethany"
+								>Bethany</option>
+							<option value="norman"
+								>Norman</option>
+						<% } else if(typeof input == 'object'&&input.city == "bethany") {%>
+							<option value="bethany"
+								>Bethany</option>
+							<option value="moore"
+								>Moore</option>
+							<option value="okc"
+								>Oklahoma City</option>
+							<option value="edmond"
+								>Edmond</option>
+							<option value="moore"
+								>Moore</option>
+							<option value="norman"
+								>Norman</option>
+						<% } else if(typeof input == 'object'&&input.city == "norman") {%>
+							<option value="norman"
+								>Norman</option>
+							<option value="bethany"
+								>Bethany</option>
+							<option value="moore"
+								>Moore</option>
+							<option value="okc"
+								>Oklahoma City</option>
+							<option value="edmond"
+								>Edmond</option>
+							<option value="moore"
+								>Moore</option>
+							<% } else {%>
+								<option value=""
 								>-- Choose --</option>
 							<option value="edmond"
 								
@@ -107,6 +203,7 @@
 							<option value="norman"
 								
 								>Norman</option>
+								<% } %>
 						</select>
 					</td>
 					<td>
