@@ -35,7 +35,7 @@ req.checkBody('password', "Password must be at least 4 chars long.").len(4)
 //req.checkBody('php').notEmpty()
 req.checkBody('major', "You must choose one Major").notEmpty()
 req.checkBody('city', "A city must be selected.").notEmpty()
-if(!req.validationErrors())
+if(!req.validationErrors()&&(req.session.input.nodejs||req.session.input.java||req.session.input.aspnet||req.session.input.php))
     return res.render('userinfo',req.session)
 else {let errors = req.validationErrors(true) 
     req.session.errors = errors
